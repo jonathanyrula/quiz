@@ -1,0 +1,11 @@
+//sequilize.sync() crea e inicaiza tabla de preguntas en BD
+
+sequilize.sync().succes(function(){
+	//succes().. ejecuta el manejador una vez creada la tabla 
+	Quiz.count().success(function(count){
+	if(count === 0){// la tabla se inicializa sólo si está vacía
+	Quiz.create({ pregunta: 'Capital de Italia',
+	respuesta: 'Roma'}).success(function(){console.log('Base de datos inicializada')});
+	};
+	
+});
